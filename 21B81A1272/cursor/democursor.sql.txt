@@ -1,0 +1,21 @@
+create or replace procedure emp_cur
+   as
+c_empno emp.empno%type;
+c_empname emp.ename%type;
+c_sal emp.sal%type;
+ CURSOR cemp is select empno,ename,sal from emp;
+Begin 
+Open cemp;
+dbms_output.put_line(c_empno||''||c_ename||''||'updated salary');
+Loop 
+FETCH cemp into c_empno,c_name,c_sal;
+exit when cemp%NOTFOUND;
+if c_sal < 2000 then 
+dbms_output.put_line(c_empno||''||c_ename||''||(c_Sal+1500));
+else 
+dbms_output.put_line(c_empno||''||c_ename||''||(c_Sal+500));
+end if;
+dbms_output.put_line('NO OF ROWS FETCHED:'||cemp%rowcount);
+end loop;
+close cemp;
+END emp_cur;

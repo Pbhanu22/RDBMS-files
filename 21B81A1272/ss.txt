@@ -1,0 +1,7 @@
+CREATE VIEW MarksView AS  
+SELECT Student_Detail.NAME, Student_Detail.ADDRESS, Student_Marks.MARKS  
+FROM Student_Detail, Student_Mark  
+WHERE Student_Detail.NAME = Student_Marks.NAME;  
+
+\
+create view empv as select empno,enmae,deptno,sal from emp,dept where e
